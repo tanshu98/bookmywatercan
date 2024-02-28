@@ -91,7 +91,7 @@ function Login() {
       ) {
         console.log("Data matches with Local Storage!");
         alert("Login Successfull");
-        navigate("/");
+        navigate("/home");
       } else {
         alert("Please Login with Correct Credentials");
       }
