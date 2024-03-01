@@ -16,6 +16,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "../../assets/Images/logo.png";
+import AppleIcon from '@mui/icons-material/Apple';
+import googlePlayIcon from '../../assets/Images/google-play 1.png'
 
 const drawerWidth = 240;
 
@@ -58,9 +60,9 @@ export default function Sidebar(props: Props) {
       }}
     >
       <Toolbar />
-      <Box component={"img"} src={Image} />
+      <Box sx={{marginBottom: '10px'}} component={"img"} src={Image} />
 
-      <List>
+      <List sx={{marginTop: '20px'}}>
         {[
           "Home",
           "Product",
@@ -91,6 +93,28 @@ export default function Sidebar(props: Props) {
           </>
         ))}
       </List>
+      <Box sx={{display: 'flex', gap: '12px', flexDirection: 'column', marginBottom: '20px', marginTop: '20px'}}>
+        {/* Apple Logo */}
+        <Box sx={{display: 'flex',gap: '5px',backgroundColor: '#fff', padding: '10px', borderRadius: '20px'}}>
+          <Box >
+            <AppleIcon sx={{width: '56px', height: '56px'}} />
+          </Box>
+          <Box>
+            <Typography sx={{fontFamily: 'Inter', fontWeight: '500', color: '#A2A3A5', fontSize: '15px'}}>Download on the</Typography>
+            <Typography sx={{color: '#161A1D', fontSize: '22px', fontWeight: '600', fontFamily: 'Inter'}}>App Store</Typography>
+          </Box>
+        </Box>
+        {/* Google Pay Logo */}
+        <Box sx={{display: 'flex',gap: '5px',backgroundColor: '#fff', padding: '10px', borderRadius: '20px'}}>
+          <Box >
+            <img src={googlePlayIcon} width={56} height={56} />
+          </Box>
+          <Box>
+            <Typography sx={{fontFamily: 'Inter', fontWeight: '500', color: '#A2A3A5', fontSize: '15px'}}>Download on the</Typography>
+            <Typography sx={{color: '#161A1D', fontSize: '22px', fontWeight: '600', fontFamily: 'Inter'}}>App Store</Typography>
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 

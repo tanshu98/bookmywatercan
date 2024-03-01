@@ -12,6 +12,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+import Paper from "@mui/material/Paper";
 import Navbar from "../Navbar/Navbar";
 import headerimg from "../../assets/Images/headerimg.png";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -56,26 +57,27 @@ function Home() {
       </Box>
       <Grid
         container
-        spacing={2}
-        sx={{ marginTop: { xs: "45px", sm: "25px" } }}
+        sx={{ marginTop: { xs: "45px", sm: "12px",md: '12px' } }}
       >
         {/* Header */}
         <Grid
           item
           sx={{
             display: "flex",
-            width: "80%",
-            marginLeft: { xs: "10px", sm: "340px" },
+            width: "100%",
+            marginLeft: { sm: '200px', md: "220px" },
             flexDirection: {
               xs: "column-reverse",
-              md: "column-reverse",
-              lg: "row",
+              sm: 'row',
+              // md: "row",
+              // lg: "row",
             },
-            marginTop: { xs: "25px", sm: "60px" },
+            marginTop: { xs: "18px", sm: "10px", md: '-10px' },
             height: "90px",
             alignItems: "center",
             gap: "30px",
             justifyContent: "space-between",
+            boxShadow: "2px 2px 25px 2px #49C2E985",
           }}
         >
           <Box
@@ -83,10 +85,13 @@ function Home() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginLeft: '22px'
+              marginLeft: { sm: '50px'},
+              marginRight: {xs: '4px'}
             }}
           >
-            <Grid sx={{ display: {xs: 'none', sm: 'flex'}, marginRight: "15px" }}>
+            <Grid
+              sx={{ display: { xs: "none", sm: "flex" }, marginRight: "15px"}}
+            >
               <LocationOnIcon sx={{ color: "#1C97FD" }} />
               <Typography
                 sx={{ fontSize: "16px", fontWeight: "500", color: "#000620" }}
@@ -96,12 +101,17 @@ function Home() {
               <ExpandMoreIcon />
             </Grid>
             <Grid sx={{ display: "flex", backgroundColor: "#F2F2F2" }}>
-              <TextField
+              {/* <TextField
                 sx={{ width: "100%" }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end" sx={{ mr: -1.5 }}>
-                      <Grid sx={{ display: {xs: 'flex', sm: 'none'}, marginRight: "15px" }}>
+                      <Grid
+                        sx={{
+                          display: { xs: "flex", sm: "none" },
+                          // marginRight: "15px",
+                        }}
+                      >
                         <LocationOnIcon sx={{ color: "#1C97FD" }} />
                         <Typography
                           sx={{
@@ -127,8 +137,43 @@ function Home() {
                   ),
                 }}
               >
-                <Typography>Search...</Typography>
-              </TextField>
+              </TextField> */}
+               <TextField sx={{width: {md: '100%'}}} variant="outlined"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end" sx={{ mr: -1.5 }}>
+                      <Grid
+                        sx={{
+                          display: { xs: "flex", sm: "none" },
+                          // marginRight: "15px",
+                        }}
+                      >
+                        <LocationOnIcon sx={{ color: "#1C97FD" }} />
+                        <Typography
+                          sx={{
+                            fontSize: "16px",
+                            fontWeight: "500",
+                            color: "#000620",
+                          }}
+                        >
+                          Nagpur, Maharashtra 441005
+                        </Typography>
+                        <ExpandMoreIcon />
+                      </Grid>
+                      <SearchIcon
+                        sx={{
+                          backgroundColor: "#1C97FD",
+                          borderRadius: "0px 10px 10px 0px",
+                          height: "55px",
+                          width: "51px",
+                          color: "#fff",
+                        }}
+                      />
+                    </InputAdornment>
+                  ),
+                }}
+               
+               />
             </Grid>
           </Box>
           <Box
@@ -138,8 +183,9 @@ function Home() {
               alignItems: "center",
               justifyContent: "space-between",
               // marginRight: {xs: '180px', sm: '40px'}
-              ml: {xs: 14},
-              mb: 2
+              ml: { xs: 8 },
+              marginBottom: {xs:'10px'}
+              // mb: {xs: 1},
             }}
           >
             <Typography
@@ -158,7 +204,8 @@ function Home() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                ml: 15,
+                ml: {xs: 10, sm: 15},
+                marginRight: {md: '80px'}
                 // mt: 1
               }}
             >
@@ -178,12 +225,20 @@ function Home() {
       </Grid>
       {/* Display Navbar based on a conditon */}
 
-      <Box sx={{ display: { xs: "none", md: "block" } }}>
+      <Box sx={{ display: { xs: "none", md: "block" }, mb: 5 }}>
         <Navbar />
       </Box>
-      <Box sx={{ display: { xs: "block", md: "none" }, ml:1, mt: 3 }}>
-        <img src={banner} alt="" width={300}/>
-      </Box>
+      <Box
+        component="img"
+        sx={{
+          display: { xs: "block", md: "none" },
+          ml: { xs: 1, sm: 35 },
+          mt: 3,
+          width: {xs: 300, sm: 465}
+        }}
+        alt="Banner Image"
+        src={banner}
+      />
       <Box
         sx={{
           display: "flex",
@@ -191,10 +246,15 @@ function Home() {
           gap: "40px",
           marginTop: { sm: "100px", md: "340px" },
           marginLeft: { xs: "10px", sm: "100px", md: "340px" },
-          width: { sm: "20%", md: "60%" },
+          width: { sm: "20%", md: "80%" },
         }}
       >
-        <Box sx={{ borderLeft: "3px solid #1C97FD", marginTop: {xs: '0px', sm: '100px'} }}>
+        <Box
+          sx={{
+            borderLeft: "3px solid #1C97FD",
+            marginTop: { xs: "0px", sm: "100px" },
+          }}
+        >
           <Typography
             sx={{
               ml: 2,
@@ -206,7 +266,11 @@ function Home() {
             Shop Nearby
           </Typography>
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "60px" }}>
+        {/* Display item cards */}
+        {/* <Paper>
+          
+        </Paper> */}
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "60px",   boxShadow: "2px 2px 40px 2px #49C2E985", padding: '20px'}}>
           <Box
             sx={{
               display: "flex",
@@ -215,15 +279,15 @@ function Home() {
             }}
           >
             <Box>
-              <img src={image1} alt="" width={300} />
+              <img src={image1} alt="" width={270} />
             </Box>
-            <Box sx={{ marginBottom: "20px", gap: "10px" }}>
-              <Typography sx={{ fontSize: "22px", fontWeight: "500px" }}>
+            <Box sx={{ marginBottom: "20px", gap: "5px" }}>
+              <Typography sx={{ fontSize: {xs: '19px', md: '22px'}, fontWeight: "500px" }}>
                 Shyamsheel Aqua Cool Water
               </Typography>
               <Box sx={{ display: "flex", marginTop: "15px" }}>
-                <Box>
-                  <Box sx={{ display: "flex", marginBottom: "10px" }}>
+                <Box sx={{display: 'flex', flexDirection: {xs: 'column', sm: 'row'}, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                  <Box sx={{ display: "flex",  alignItems: 'center', justifyContent: 'center', marginTop: {md: '12px'}, marginRight: {md: '10px'} }}>
                     <Box sx={{ display: "flex", gap: "10px" }}>
                       <LocationOnIcon sx={{ color: "#1C97FD" }} />
                       <Typography
@@ -237,7 +301,7 @@ function Home() {
                         1.1 km
                       </Typography>
                     </Box>
-                    <Box sx={{ display: "flex", gap: "10px", ml: 5 }}>
+                    <Box sx={{ display: "flex", gap: "10px", ml: 2.5, alignItems: {xs: 'center'}, justifyContent: {xs: 'center'}}}>
                       <AccessTimeFilledIcon sx={{ color: "#1C97FD" }} />
                       <Typography
                         sx={{
@@ -250,7 +314,7 @@ function Home() {
                       </Typography>
                     </Box>
                   </Box>
-                  <Box>
+                  <Box sx={{marginRight: {xs: '150px'}, marginTop: {xs: '15px'}}}>
                     <Star sx={{ color: "#FFD200" }} />
                     <Star sx={{ color: "#FFD200" }} />
                     <Star sx={{ color: "#FFD200" }} />
@@ -275,13 +339,14 @@ function Home() {
                 </Typography>
               </Box>
             </Box>
-            <Box sx={{}}>
+            {/* Button */}
+            <Box sx={{marginLeft: {xs: '0px', md: '200px'}}}>
               <Button
                 className="More-Details-btn"
                 type="submit"
                 sx={{
                   padding: "21px",
-                  width: { xs: "75%", sm: "100%" },
+                  width: { xs: "98%", sm: "100%" },
                   "&:hover": { backgroundColor: "#05ddee" },
                   marginTop: { sm: "35px" },
                   fontWeight: "600",
@@ -298,7 +363,570 @@ function Home() {
               </Button>
             </Box>
           </Box>
-          
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "60px",   boxShadow: "2px 2px 40px 2px #49C2E985", padding: '20px'}}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "30px",
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
+            <Box>
+              <img src={image2} alt="" width={270} />
+            </Box>
+            <Box sx={{ marginBottom: "20px", gap: "5px" }}>
+              <Typography sx={{ fontSize: {xs: '19px', md: '22px'}, fontWeight: "500px" }}>
+                Shyamsheel Aqua Cool Water
+              </Typography>
+              <Box sx={{ display: "flex", marginTop: "15px" }}>
+                <Box sx={{display: 'flex', flexDirection: {xs: 'column', sm: 'row'}, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                  <Box sx={{ display: "flex",  alignItems: 'center', justifyContent: 'center', marginTop: {md: '12px'}, marginRight: {md: '10px'} }}>
+                    <Box sx={{ display: "flex", gap: "10px" }}>
+                      <LocationOnIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                          lineHeight: "20px",
+                        }}
+                      >
+                        1.1 km
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", gap: "10px", ml: 2.5, alignItems: {xs: 'center'}, justifyContent: {xs: 'center'}}}>
+                      <AccessTimeFilledIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                        }}
+                      >
+                        Time: 24 h available
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box sx={{marginRight: {xs: '150px'}, marginTop: {xs: '15px'}}}>
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                  </Box>
+                </Box>
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    color: "#A2A3A5",
+                    fontSize: "17px",
+                    lineHeight: "26px",
+                    fontWeight: "500",
+                    fontFamily: "Inter",
+                    marginTop: "10px",
+                  }}
+                >
+                  Address: Rani durgawati chowk, 17, behind the puspanjali hall,
+                  Nagpur, <br /> Maharashtra 440017
+                </Typography>
+              </Box>
+            </Box>
+            {/* Button */}
+            <Box sx={{marginLeft: {xs: '0px', md: '200px'}}}>
+              <Button
+                className="More-Details-btn"
+                type="submit"
+                sx={{
+                  padding: "21px",
+                  width: { xs: "98%", sm: "100%" },
+                  "&:hover": { backgroundColor: "#05ddee" },
+                  marginTop: { sm: "35px" },
+                  fontWeight: "600",
+                  lineHeight: "24px",
+                  fontSize: "20px",
+                  color: "#fff",
+                  backgroundColor: "#0c8ce9",
+                  borderRadius: "5px",
+
+                  boxShadow: "2px 2px 25px 2px #49C2E985",
+                }}
+              >
+                More Details
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "60px",   boxShadow: "2px 2px 40px 2px #49C2E985", padding: '20px'}}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "30px",
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
+            <Box>
+              <img src={image3} alt="" width={270} />
+            </Box>
+            <Box sx={{ marginBottom: "20px", gap: "5px" }}>
+              <Typography sx={{ fontSize: {xs: '19px', md: '22px'}, fontWeight: "500px" }}>
+                Shyamsheel Aqua Cool Water
+              </Typography>
+              <Box sx={{ display: "flex", marginTop: "15px" }}>
+                <Box sx={{display: 'flex', flexDirection: {xs: 'column', sm: 'row'}, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                  <Box sx={{ display: "flex",  alignItems: 'center', justifyContent: 'center', marginTop: {md: '12px'}, marginRight: {md: '10px'} }}>
+                    <Box sx={{ display: "flex", gap: "10px" }}>
+                      <LocationOnIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                          lineHeight: "20px",
+                        }}
+                      >
+                        1.1 km
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", gap: "10px", ml: 2.5, alignItems: {xs: 'center'}, justifyContent: {xs: 'center'}}}>
+                      <AccessTimeFilledIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                        }}
+                      >
+                        Time: 24 h available
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box sx={{marginRight: {xs: '150px'}, marginTop: {xs: '15px'}}}>
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                  </Box>
+                </Box>
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    color: "#A2A3A5",
+                    fontSize: "17px",
+                    lineHeight: "26px",
+                    fontWeight: "500",
+                    fontFamily: "Inter",
+                    marginTop: "10px",
+                  }}
+                >
+                  Address: Rani durgawati chowk, 17, behind the puspanjali hall,
+                  Nagpur, <br /> Maharashtra 440017
+                </Typography>
+              </Box>
+            </Box>
+            {/* Button */}
+            <Box sx={{marginLeft: {xs: '0px', md: '200px'}}}>
+              <Button
+                className="More-Details-btn"
+                type="submit"
+                sx={{
+                  padding: "21px",
+                  width: { xs: "98%", sm: "100%" },
+                  "&:hover": { backgroundColor: "#05ddee" },
+                  marginTop: { sm: "35px" },
+                  fontWeight: "600",
+                  lineHeight: "24px",
+                  fontSize: "20px",
+                  color: "#fff",
+                  backgroundColor: "#0c8ce9",
+                  borderRadius: "5px",
+
+                  boxShadow: "2px 2px 25px 2px #49C2E985",
+                }}
+              >
+                More Details
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "60px",   boxShadow: "2px 2px 40px 2px #49C2E985", padding: '20px'}}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "30px",
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
+            <Box>
+              <img src={image4} alt="" width={270} />
+            </Box>
+            <Box sx={{ marginBottom: "20px", gap: "5px" }}>
+              <Typography sx={{ fontSize: {xs: '19px', md: '22px'}, fontWeight: "500px" }}>
+                Shyamsheel Aqua Cool Water
+              </Typography>
+              <Box sx={{ display: "flex", marginTop: "15px" }}>
+                <Box sx={{display: 'flex', flexDirection: {xs: 'column', sm: 'row'}, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                  <Box sx={{ display: "flex",  alignItems: 'center', justifyContent: 'center', marginTop: {md: '12px'}, marginRight: {md: '10px'} }}>
+                    <Box sx={{ display: "flex", gap: "10px" }}>
+                      <LocationOnIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                          lineHeight: "20px",
+                        }}
+                      >
+                        1.1 km
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", gap: "10px", ml: 2.5, alignItems: {xs: 'center'}, justifyContent: {xs: 'center'}}}>
+                      <AccessTimeFilledIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                        }}
+                      >
+                        Time: 24 h available
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box sx={{marginRight: {xs: '150px'}, marginTop: {xs: '15px'}}}>
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                  </Box>
+                </Box>
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    color: "#A2A3A5",
+                    fontSize: "17px",
+                    lineHeight: "26px",
+                    fontWeight: "500",
+                    fontFamily: "Inter",
+                    marginTop: "10px",
+                  }}
+                >
+                  Address: Rani durgawati chowk, 17, behind the puspanjali hall,
+                  Nagpur, <br /> Maharashtra 440017
+                </Typography>
+              </Box>
+            </Box>
+            {/* Button */}
+            <Box sx={{marginLeft: {xs: '0px', md: '200px'}}}>
+              <Button
+                className="More-Details-btn"
+                type="submit"
+                sx={{
+                  padding: "21px",
+                  width: { xs: "98%", sm: "100%" },
+                  "&:hover": { backgroundColor: "#05ddee" },
+                  marginTop: { sm: "35px" },
+                  fontWeight: "600",
+                  lineHeight: "24px",
+                  fontSize: "20px",
+                  color: "#fff",
+                  backgroundColor: "#0c8ce9",
+                  borderRadius: "5px",
+
+                  boxShadow: "2px 2px 25px 2px #49C2E985",
+                }}
+              >
+                More Details
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "60px",   boxShadow: "2px 2px 40px 2px #49C2E985", padding: '20px'}}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "30px",
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
+            <Box>
+              <img src={image5} alt="" width={270} />
+            </Box>
+            <Box sx={{ marginBottom: "20px", gap: "5px" }}>
+              <Typography sx={{ fontSize: {xs: '19px', md: '22px'}, fontWeight: "500px" }}>
+                Shyamsheel Aqua Cool Water
+              </Typography>
+              <Box sx={{ display: "flex", marginTop: "15px" }}>
+                <Box sx={{display: 'flex', flexDirection: {xs: 'column', sm: 'row'}, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                  <Box sx={{ display: "flex",  alignItems: 'center', justifyContent: 'center', marginTop: {md: '12px'}, marginRight: {md: '10px'} }}>
+                    <Box sx={{ display: "flex", gap: "10px" }}>
+                      <LocationOnIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                          lineHeight: "20px",
+                        }}
+                      >
+                        1.1 km
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", gap: "10px", ml: 2.5, alignItems: {xs: 'center'}, justifyContent: {xs: 'center'}}}>
+                      <AccessTimeFilledIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                        }}
+                      >
+                        Time: 24 h available
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box sx={{marginRight: {xs: '150px'}, marginTop: {xs: '15px'}}}>
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                  </Box>
+                </Box>
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    color: "#A2A3A5",
+                    fontSize: "17px",
+                    lineHeight: "26px",
+                    fontWeight: "500",
+                    fontFamily: "Inter",
+                    marginTop: "10px",
+                  }}
+                >
+                  Address: Rani durgawati chowk, 17, behind the puspanjali hall,
+                  Nagpur, <br /> Maharashtra 440017
+                </Typography>
+              </Box>
+            </Box>
+            {/* Button */}
+            <Box sx={{marginLeft: {xs: '0px', md: '200px'}}}>
+              <Button
+                className="More-Details-btn"
+                type="submit"
+                sx={{
+                  padding: "21px",
+                  width: { xs: "98%", sm: "100%" },
+                  "&:hover": { backgroundColor: "#05ddee" },
+                  marginTop: { sm: "35px" },
+                  fontWeight: "600",
+                  lineHeight: "24px",
+                  fontSize: "20px",
+                  color: "#fff",
+                  backgroundColor: "#0c8ce9",
+                  borderRadius: "5px",
+
+                  boxShadow: "2px 2px 25px 2px #49C2E985",
+                }}
+              >
+                More Details
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "60px",   boxShadow: "2px 2px 40px 2px #49C2E985", padding: '20px'}}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "30px",
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
+            <Box>
+              <img src={image6} alt="" width={270} />
+            </Box>
+            <Box sx={{ marginBottom: "20px", gap: "5px" }}>
+              <Typography sx={{ fontSize: {xs: '19px', md: '22px'}, fontWeight: "500px" }}>
+                Shyamsheel Aqua Cool Water
+              </Typography>
+              <Box sx={{ display: "flex", marginTop: "15px" }}>
+                <Box sx={{display: 'flex', flexDirection: {xs: 'column', sm: 'row'}, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                  <Box sx={{ display: "flex",  alignItems: 'center', justifyContent: 'center', marginTop: {md: '12px'}, marginRight: {md: '10px'} }}>
+                    <Box sx={{ display: "flex", gap: "10px" }}>
+                      <LocationOnIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                          lineHeight: "20px",
+                        }}
+                      >
+                        1.1 km
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", gap: "10px", ml: 2.5, alignItems: {xs: 'center'}, justifyContent: {xs: 'center'}}}>
+                      <AccessTimeFilledIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                        }}
+                      >
+                        Time: 24 h available
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box sx={{marginRight: {xs: '150px'}, marginTop: {xs: '15px'}}}>
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                  </Box>
+                </Box>
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    color: "#A2A3A5",
+                    fontSize: "17px",
+                    lineHeight: "26px",
+                    fontWeight: "500",
+                    fontFamily: "Inter",
+                    marginTop: "10px",
+                  }}
+                >
+                  Address: Rani durgawati chowk, 17, behind the puspanjali hall,
+                  Nagpur, <br /> Maharashtra 440017
+                </Typography>
+              </Box>
+            </Box>
+            {/* Button */}
+            <Box sx={{marginLeft: {xs: '0px', md: '200px'}}}>
+              <Button
+                className="More-Details-btn"
+                type="submit"
+                sx={{
+                  padding: "21px",
+                  width: { xs: "98%", sm: "100%" },
+                  "&:hover": { backgroundColor: "#05ddee" },
+                  marginTop: { sm: "35px" },
+                  fontWeight: "600",
+                  lineHeight: "24px",
+                  fontSize: "20px",
+                  color: "#fff",
+                  backgroundColor: "#0c8ce9",
+                  borderRadius: "5px",
+
+                  boxShadow: "2px 2px 25px 2px #49C2E985",
+                }}
+              >
+                More Details
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "60px",   boxShadow: "2px 2px 40px 2px #49C2E985", padding: '20px'}}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "30px",
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
+            <Box>
+              <img src={image7} alt="" width={270} />
+            </Box>
+            <Box sx={{ marginBottom: "20px", gap: "5px" }}>
+              <Typography sx={{ fontSize: {xs: '19px', md: '22px'}, fontWeight: "500px" }}>
+                Shyamsheel Aqua Cool Water
+              </Typography>
+              <Box sx={{ display: "flex", marginTop: "15px" }}>
+                <Box sx={{display: 'flex', flexDirection: {xs: 'column', sm: 'row'}, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                  <Box sx={{ display: "flex",  alignItems: 'center', justifyContent: 'center', marginTop: {md: '12px'}, marginRight: {md: '10px'} }}>
+                    <Box sx={{ display: "flex", gap: "10px" }}>
+                      <LocationOnIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                          lineHeight: "20px",
+                        }}
+                      >
+                        1.1 km
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex", gap: "10px", ml: 2.5, alignItems: {xs: 'center'}, justifyContent: {xs: 'center'}}}>
+                      <AccessTimeFilledIcon sx={{ color: "#1C97FD" }} />
+                      <Typography
+                        sx={{
+                          fontSize: "16px",
+                          fontWeight: "500",
+                          fontFamily: "Inter",
+                        }}
+                      >
+                        Time: 24 h available
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box sx={{marginRight: {xs: '150px'}, marginTop: {xs: '15px'}}}>
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                    <Star sx={{ color: "#FFD200" }} />
+                  </Box>
+                </Box>
+              </Box>
+              <Box>
+                <Typography
+                  sx={{
+                    color: "#A2A3A5",
+                    fontSize: "17px",
+                    lineHeight: "26px",
+                    fontWeight: "500",
+                    fontFamily: "Inter",
+                    marginTop: "10px",
+                  }}
+                >
+                  Address: Rani durgawati chowk, 17, behind the puspanjali hall,
+                  Nagpur, <br /> Maharashtra 440017
+                </Typography>
+              </Box>
+            </Box>
+            {/* Button */}
+            <Box sx={{marginLeft: {xs: '0px', md: '200px'}}}>
+              <Button
+                className="More-Details-btn"
+                type="submit"
+                sx={{
+                  padding: "21px",
+                  width: { xs: "98%", sm: "100%" },
+                  "&:hover": { backgroundColor: "#05ddee" },
+                  marginTop: { sm: "35px" },
+                  fontWeight: "600",
+                  lineHeight: "24px",
+                  fontSize: "20px",
+                  color: "#fff",
+                  backgroundColor: "#0c8ce9",
+                  borderRadius: "5px",
+
+                  boxShadow: "2px 2px 25px 2px #49C2E985",
+                }}
+              >
+                More Details
+              </Button>
+            </Box>
+          </Box>
         </Box>
       </Box>
 
@@ -312,10 +940,10 @@ function Home() {
 
           // flexDirection: "column",
           gap: "40px",
-          ml:1,
-          marginTop: {xs:'30px', sm: "100px", md: "340px" },
-          marginLeft: { xs: "10px", sm: "100px", md: "340px" },
-          width: {xs: '97%', sm: "20%", md: "60%" },
+          // ml: 1,
+          marginTop: { xs: "30px", sm: "100px", md: "150px" },
+          marginLeft: { xs: "0px", sm: "100px", md: "241px" },
+          width: { xs: "100%", sm: "20%", md: "86.8%" },
           color: "#fff",
         }}
       >
@@ -325,7 +953,7 @@ function Home() {
             lineHeight: "27px",
             fontWeight: "600",
             textAlign: "center",
-            height: "100px",
+            height: "90px",
             marginTop: "60px",
           }}
         >

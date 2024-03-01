@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import navbg from "../../assets/Images/navbarbg.jpg";
 import { Box, Button, Typography } from "@mui/material";
-import image21 from '../../assets/Images/image21.png';
+import image21 from "../../assets/Images/image21.png";
 import { useNavigate } from "react-router-dom";
+import Login from '../Login/Login';
 
-export default function Navbar() {
-  const navigate = useNavigate();
+export default function Navbar(props:any) {
+
+  const {isLogin} = props;
+  console.log(props);
   
- let handleLogin = (e:React.MouseEvent<HTMLElement>)=> {
-   navigate('/login');
- }
+  console.log(isLogin);
+  
+
+  // console.log({isLogin}, 'Islogin value');
+  
+  const navigate = useNavigate();
+  // const [isLogin, setisLogin] = useState(false);
+
+  let handleLogin = (e: React.MouseEvent<HTMLElement>) => {
+    // setisLogin(true);
+    navigate("/login");
+  };
   var settings = {
     dots: true,
     arrows: true,
@@ -49,7 +61,7 @@ export default function Navbar() {
     customPaging: (i: number) => (
       <div
         style={{
-          position: 'relative',
+          position: "relative",
           width: "11px",
           height: "11px",
           backgroundColor: "gray",
@@ -88,6 +100,7 @@ export default function Navbar() {
     // ],
   };
   return (
+    <>
     <Box
       sx={{
         width: "80%",
@@ -98,7 +111,7 @@ export default function Navbar() {
       }}
     >
       <Slider {...settings}>
-        <Box sx={{ position: "relative", width: "100%" }}>
+        <Box sx={{ position: "relative", width: "100%" , backgroundColor: 'lightblue'}}>
           <Box
             sx={{
               position: "absolute",
@@ -116,26 +129,74 @@ export default function Navbar() {
                 lineHeight: "40px",
                 fontWeight: "400",
                 fontFamily: "Praise",
-                letter: '2%'
+                letter: "2%",
               }}
             >
-              Welcome to Watercan Shop
+              Welcome to Watercan Shop  
             </Typography>
-            <Typography sx={{color: '#fff', fontSize: '50px', fontWeight: '700', lineHeight: '60px',fontFamily: 'Inter'}}>
+            <Typography
+              sx={{
+                color: "#fff",
+                fontSize: "50px",
+                fontWeight: "700",
+                lineHeight: "60px",
+                fontFamily: "Inter",
+              }}
+            >
               We Have Best <br /> Child Water
             </Typography>
-            <Button onClick={handleLogin} className="Login-btn" sx={{"&:hover": {backgroundColor: "#05ddee" },
-             marginTop: '10px',fontWeight: '600', lineHeight: '24px', fontSize: '20px', color: '#fff', backgroundColor: '#0c8ce9', boxShadow: '2px 2px 25px 2px #49C2E985'}} >Login Account</Button >
+            {/* Condition of rendering button */}
+            {/* handle login cha state thev..and tyachi intiail value false rahil..mgh user click kela ki..state chi value true hoil.. */}
+            {/* So basically..jevha login true rahil..tr he login button show nahi krych else show krycha */}
+
+            {/* Condition for displaying button */}
+            
+
+            {{isLogin} ? (
+              <Button
+                onClick={handleLogin}
+                className="Login-btn"
+                sx={{
+                  "&:hover": { backgroundColor: "#05ddee" },
+                  marginTop: "10px",
+                  fontWeight: "600",
+                  lineHeight: "24px",
+                  fontSize: "20px",
+                  color: "#fff",
+                  backgroundColor: "#0c8ce9",
+                  boxShadow: "2px 2px 25px 2px #49C2E985",
+                  display: "none",
+                }}
+              >
+                Login Account
+              </Button>
+            ) : (
+              <Button
+                onClick={handleLogin}
+                className="Login-btn"
+                sx={{
+                  "&:hover": { backgroundColor: "#05ddee" },
+                  marginTop: "10px",
+                  fontWeight: "600",
+                  lineHeight: "24px",
+                  fontSize: "20px",
+                  color: "#fff",
+                  backgroundColor: "#0c8ce9",
+                  boxShadow: "2px 2px 25px 2px #49C2E985",
+
+                }}
+              >
+                Login Account
+              </Button>
+            )}
           </Box>
-          <Box component="img"
+          <Box
+            component="img"
             src={image21}
             width={286}
             height={405}
-            sx={{position: 'absolute', top: '25%', left: '70%'}}
-            
-            >
-
-          </Box>
+            sx={{ position: "absolute", top: "10%", left: "70%" }}
+          ></Box>
           <Box
             component="img"
             src={navbg}
@@ -160,26 +221,45 @@ export default function Navbar() {
                 lineHeight: "40px",
                 fontWeight: "400",
                 fontFamily: "Praise",
-                letter: '2%'
+                letter: "2%",
               }}
             >
               Welcome to Watercan Shop
             </Typography>
-            <Typography sx={{color: '#fff', fontSize: '50px', fontWeight: '700', lineHeight: '60px',fontFamily: 'Inter'}}>
+            <Typography
+              sx={{
+                color: "#fff",
+                fontSize: "50px",
+                fontWeight: "700",
+                lineHeight: "60px",
+                fontFamily: "Inter",
+              }}
+            >
               We Have Best <br /> Child Water
             </Typography>
-            <Button className="Login-btn" sx={{"&:hover": {backgroundColor: "#05ddee" },
-             marginTop: '10px',fontWeight: '600', lineHeight: '24px', fontSize: '20px', color: '#fff', backgroundColor: '#0c8ce9', boxShadow: '2px 2px 25px 2px #49C2E985'}} >Login Account</Button >
+            <Button
+              className="Login-btn"
+              sx={{
+                "&:hover": { backgroundColor: "#05ddee" },
+                marginTop: "10px",
+                fontWeight: "600",
+                lineHeight: "24px",
+                fontSize: "20px",
+                color: "#fff",
+                backgroundColor: "#0c8ce9",
+                boxShadow: "2px 2px 25px 2px #49C2E985",
+              }}
+            >
+              Login Account
+            </Button>
           </Box>
-          <Box component="img"
+          <Box
+            component="img"
             src={image21}
             width={286}
             height={405}
-            sx={{position: 'absolute', top: '25%', left: '70%'}}
-            
-            >
-
-          </Box>
+            sx={{ position: "absolute", top: "25%", left: "70%" }}
+          ></Box>
           <Box
             component="img"
             src={navbg}
@@ -204,26 +284,45 @@ export default function Navbar() {
                 lineHeight: "40px",
                 fontWeight: "400",
                 fontFamily: "Praise",
-                letter: '2%'
+                letter: "2%",
               }}
             >
               Welcome to Watercan Shop
             </Typography>
-            <Typography sx={{color: '#fff', fontSize: '50px', fontWeight: '700', lineHeight: '60px',fontFamily: 'Inter'}}>
+            <Typography
+              sx={{
+                color: "#fff",
+                fontSize: "50px",
+                fontWeight: "700",
+                lineHeight: "60px",
+                fontFamily: "Inter",
+              }}
+            >
               We Have Best <br /> Child Water
             </Typography>
-            <Button className="Login-btn" sx={{"&:hover": {backgroundColor: "#05ddee" },
-             marginTop: '10px',fontWeight: '600', lineHeight: '24px', fontSize: '20px', color: '#fff', backgroundColor: '#0c8ce9', boxShadow: '2px 2px 25px 2px #49C2E985'}} >Login Account</Button >
+            <Button
+              className="Login-btn"
+              sx={{
+                "&:hover": { backgroundColor: "#05ddee" },
+                marginTop: "10px",
+                fontWeight: "600",
+                lineHeight: "24px",
+                fontSize: "20px",
+                color: "#fff",
+                backgroundColor: "#0c8ce9",
+                boxShadow: "2px 2px 25px 2px #49C2E985",
+              }}
+            >
+              Login Account
+            </Button>
           </Box>
-          <Box component="img"
+          <Box
+            component="img"
             src={image21}
             width={286}
             height={405}
-            sx={{position: 'absolute', top: '25%', left: '70%'}}
-            
-            >
-
-          </Box>
+            sx={{ position: "absolute", top: "25%", left: "70%" }}
+          ></Box>
           <Box
             component="img"
             src={navbg}
@@ -232,5 +331,8 @@ export default function Navbar() {
         </Box>
       </Slider>
     </Box>
+    {/* <Login /> */}
+    </>
+
   );
 }

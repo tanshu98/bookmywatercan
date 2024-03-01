@@ -7,7 +7,7 @@ import {
   InputAdornment,
   Button,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import image29 from "../../assets/SIgn Up Page Images/image29.png";
 import image22 from "../../assets/SIgn Up Page Images/image22.png";
@@ -26,6 +26,9 @@ import image34 from "../../assets/Images/Image34.png";
 
 function Login() {
   const navigate = useNavigate();
+
+  // Login Props -
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const [nineOne, setNineOne] = useState("");
 
@@ -62,48 +65,73 @@ function Login() {
     setPasscode6(e.target.value);
   };
 
-  const handleRegister = ()=> {
-      console.log('Register btn is clicked');
-      navigate('/signup')
-      
-  }
-
-  let loginFormData = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const storedData = localStorage.getItem("Dataobj");
-
-    if (storedData !== null) {
-      // Parse JSON Data
-      const getSignUpData = JSON.parse(storedData);
-      console.log(getSignUpData);
-
-      // Compare Local storage Data with the resp input field data -
-
-      if (
-        getSignUpData.nineOne === nineOne &&
-        getSignUpData.phoneNumber === phoneNumber &&
-        getSignUpData.passcode1 === passcode1 &&
-        getSignUpData.passcode2 === passcode2 &&
-        getSignUpData.passcode3 === passcode3 &&
-        getSignUpData.passcode4 === passcode4 &&
-        getSignUpData.passcode5 === passcode5 &&
-        getSignUpData.passcode6 === passcode6
-      ) {
-        console.log("Data matches with Local Storage!");
-        alert("Login Successfull");
-        navigate("/home");
-      } else {
-        alert("Please Login with Correct Credentials");
-      }
-    } else {
-      console.error('Data with key "Dataobj" not found in localStorage.');
-    }
-
-    console.log("Login Form button is clicked!");
-    console.log(e);
+  const handleRegister = () => {
+    console.log("Register btn is clicked");
+    navigate("/signup");
   };
+
+  // let loginFormData = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const storedData = localStorage.getItem("Dataobj");
+
+  //   // ! Issue with Comparison here
+  //   setIsLogin('tanshu');
+  //   console.log("isLogin", isLogin);
+
+  //   if (storedData !== null) {
+  //     // Parse JSON Data
+  //     const getSignUpData = JSON.parse(storedData);
+  //     console.log(getSignUpData);
+
+  //     // Compare Local storage Data with the resp input field data -
+
+  //     if (
+  //       getSignUpData?.nineOne === nineOne &&
+  //       getSignUpData?.phoneNumber === phoneNumber &&
+  //       getSignUpData?.passcode1 === passcode1 &&
+  //       getSignUpData?.passcode2 === passcode2 &&
+  //       getSignUpData?.passcode3 === passcode3 &&
+  //       getSignUpData?.passcode4 === passcode4 &&
+  //       getSignUpData?.passcode5 === passcode5 &&
+  //       getSignUpData?.passcode6 === passcode6
+  //     ) {
+  //       console.log("Data matches with Local Storage!");
+     
+  //       alert("Login Successfull");
+  //       navigate("/home");
+  //     } else {
+  //       alert("Please Login with Correct Credentials");
+  //     }
+  //   } else {
+  //     console.error('Data with key "Dataobj" not found in localStorage.');
+  //   }
+
+  //   console.log("Login Form button is clicked!");
+  //   console.log(e);
+  // };
+ 
+ const loginFormData = (e:React.FormEvent<HTMLElement>)=> {
+    e.preventDefault();
+    
+    setIsLogin(true);
+
+    console.log('is Login Updated');
+    
+ }
+ 
+  useEffect(() => {
+    console.log("isLogin updated:", isLogin);
+  }, [isLogin]);
+
+  if(isLogin) {
+    navigate('/home')
+  }
   return (
-    <Grid container direction={'row'} sx={{ backgroundColor: "#F2F2F2", width: "100%" }}>
+    <Grid
+      container
+      direction={"row"}
+      sx={{ backgroundColor: "#F2F2F2", width: "100%" }}
+    >
       {/* Register Page  */}
       <Grid
         sx={{
